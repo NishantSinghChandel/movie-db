@@ -2,6 +2,7 @@ import { useState } from "react";
 import MovieCard from "../cards/MovieCard";
 
 const apiKey = import.meta.env.VITE_TMBD_API_KEY;
+console.log("🚀 ~ apiKey:", apiKey);
 
 export default function TrendingVideos() {
   const [movies, setMovies] = useState([]);
@@ -30,7 +31,9 @@ export default function TrendingVideos() {
         ))}
       </div>
 
-      <button onClick={getPopularMovies}>Fetch API</button>
+      <button className="border rounded px-4" onClick={getPopularMovies}>
+        Fetch API
+      </button>
     </div>
   );
 }

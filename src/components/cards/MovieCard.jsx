@@ -5,9 +5,8 @@ export default function MovieCard({ movie, onClick }) {
     poster_path = null,
     vote_average = null,
     release_date = "",
-    overview = "",
+    overview,
   } = movie || {};
-  console.log(movie);
   return (
     <article
       className="group max-w-xs bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-200"
@@ -75,7 +74,7 @@ export default function MovieCard({ movie, onClick }) {
 
           <a
             href={`https://www.themoviedb.org/search?query=${encodeURIComponent(
-              title
+              title,
             )}`}
             target="_blank"
             rel="noopener noreferrer"
