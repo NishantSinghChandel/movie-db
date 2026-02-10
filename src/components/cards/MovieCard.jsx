@@ -1,6 +1,8 @@
+import { NavLink } from "react-router";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 export default function MovieCard({ movie, onClick }) {
   const {
+    id,
     title = "Untitled",
     poster_path = null,
     vote_average = null,
@@ -60,16 +62,11 @@ export default function MovieCard({ movie, onClick }) {
           {overview || "No overview available."}
         </p>
 
-        <div className="mt-4 flex items-center justify-between">
-          <button
-            className="text-xs sm:text-sm px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-sm"
-            onClick={(e) => {
-              e.stopPropagation();
-              // placeholder for play or details action
-              if (onClick) onClick(movie);
-            }}
-          >
-            View
+        <div className="flex justify-between items-center mt-2">
+          <button className="text-xs sm:text-sm px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-sm">
+            <NavLink to={`${id}`} end>
+              View
+            </NavLink>
           </button>
 
           <a
