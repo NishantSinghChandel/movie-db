@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MovieCard from "../cards/MovieCard";
 
 const apiKey = import.meta.env.VITE_TMBD_API_KEY;
 
 export default function TrendingVideos() {
   const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getPopularMovies();
+  }, []);
 
   function getPopularMovies() {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
@@ -16,7 +20,6 @@ export default function TrendingVideos() {
       .then((res) => res.json())
       .then((json) => {
         setMovies(json.results);
-        console.log(json.results);
       })
       .catch((err) => console.error(err));
   }
@@ -29,10 +32,6 @@ export default function TrendingVideos() {
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
-
-      <button className="border rounded px-4" onClick={getPopularMovies}>
-        Fetch API
-      </button>
     </div>
   );
 }
